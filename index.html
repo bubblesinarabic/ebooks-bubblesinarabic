@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الغرفة — BUBBLES</title>
+  <meta name="description" content="HTML e-book viewer (page-faithful) for الغرفة." />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="header" dir="ltr">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Bubbles logo" />
+      <div class="titles">
+        <div class="ar" dir="rtl">الغرفة</div>
+        <div class="en">BUBBLES</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn" aria-label="Previous page">◀</button>
+      <div class="counter" id="counter">1 / 7</div>
+      <button class="btn" id="nextBtn" aria-label="Next page">▶</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <aside class="sidebar" dir="rtl">
+      <h2>الفهرس / الصفحات</h2>
+      <div class="thumbs" id="thumbs"></div>
+    </aside>
+
+    <section class="viewer" dir="ltr">
+      <div class="stage">
+        <img id="pageImg" src="" alt="" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" dir="rtl">
+    <div>اختصارات لوحة المفاتيح: السهم الأيسر/الأيمن للتنقل بين الصفحات.</div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
