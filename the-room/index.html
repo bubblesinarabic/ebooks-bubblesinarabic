@@ -1,282 +1,198 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>الغرفة — BUBBLES</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الغرفة — BUBBLES</title>
+<link rel="icon" href="logo.png">
 
-  <meta name="description" content="Bubbles in Arabic – The Room (Interactive HTML e-Book)">
-  <link rel="icon" href="logo.png">
+<style>
+:root{
+  --lavender:#d09feb;
+  --cream:#fbf7ec;
+  --pink:#f6b6bc;
+  --teal:#6cc7c5;
+  --navy:#3a455a;
+}
 
-  <style>
-    :root{
-      --lavender:#d09feb;
-      --cream:#fbf7ec;
-      --pink:#f6b6bc;
-      --teal:#6cc7c5;
-      --navy:#3a455a;
-      --shadow:0 18px 40px rgba(58,69,90,.12);
-    }
+*{box-sizing:border-box}
+html,body{height:100%}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans Arabic","Noto Kufi Arabic",sans-serif;
+  background:linear-gradient(180deg,var(--lavender),var(--cream));
+  color:var(--navy);
+}
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Arial,"Noto Sans Arabic","Noto Kufi Arabic",sans-serif;
-      background:linear-gradient(180deg,var(--lavender),color-mix(in srgb,var(--lavender) 35%,var(--cream) 65%));
-      color:var(--navy);
-    }
+/* Header */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  background:rgba(255,255,255,.9);
+  border-bottom:2px solid var(--pink);
+  position:sticky;
+  top:0;
+}
 
-    /* Header */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:12px 16px;
-      background:rgba(251,247,236,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:2px solid color-mix(in srgb,var(--pink) 60%,var(--cream) 40%);
-      position:sticky;
-      top:0;
-      z-index:10;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .brand img{
-      width:52px;
-      height:52px;
-      object-fit:contain;
-    }
-    .titles{
-      line-height:1.1;
-    }
-    .titles .ar{
-      font-weight:900;
-      font-size:18px;
-    }
-    .titles .en{
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:2px;
-      opacity:.85;
-      direction:ltr;
-    }
+.brand img{
+  width:48px;
+}
 
-    .controls{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+.controls{
+  display:flex;
+  gap:8px;
+}
 
-    button{
-      appearance:none;
-      border:2px solid color-mix(in srgb,var(--teal) 65%,var(--cream) 35%);
-      background:#fff;
-      color:var(--navy);
-      padding:10px 12px;
-      border-radius:14px;
-      font-weight:900;
-      cursor:pointer;
-    }
-    button:disabled{
-      opacity:.45;
-      cursor:not-allowed;
-    }
+button{
+  border:2px solid var(--teal);
+  background:#fff;
+  border-radius:12px;
+  padding:8px 12px;
+  font-weight:700;
+  cursor:pointer;
+}
 
-    .counter{
-      padding:8px 10px;
-      border-radius:14px;
-      border:2px solid color-mix(in srgb,var(--pink) 65%,var(--cream) 35%);
-      background:rgba(255,255,255,.85);
-      font-weight:900;
-    }
+button:disabled{opacity:.4}
 
-    /* Layout */
-    main{
-      max-width:1320px;
-      margin:18px auto 26px;
-      padding:0 14px;
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:16px;
-    }
+.counter{
+  border:2px solid var(--pink);
+  border-radius:12px;
+  padding:8px 12px;
+  font-weight:700;
+}
 
-    @media(max-width:980px){
-      main{grid-template-columns:1fr}
-    }
+/* Layout */
+main{
+  max-width:1200px;
+  margin:20px auto;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:16px;
+}
 
-    /* Sidebar */
-    aside{
-      background:rgba(251,247,236,.88);
-      border:2px solid rgba(58,69,90,.10);
-      border-radius:18px;
-      padding:12px;
-      box-shadow:var(--shadow);
-      height:fit-content;
-    }
+@media(max-width:900px){
+  main{grid-template-columns:1fr}
+}
 
-    aside h2{
-      margin:6px 8px 10px;
-      font-size:14px;
-    }
+aside{
+  background:#fff;
+  border-radius:16px;
+  padding:12px;
+}
 
-    .thumbs{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
 
-    .thumb{
-      border-radius:12px;
-      overflow:hidden;
-      border:3px solid transparent;
-      background:#fff;
-      cursor:pointer;
-    }
+.thumb{
+  border:3px solid transparent;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+}
 
-    .thumb.active{
-      border-color:color-mix(in srgb,var(--teal) 85%,#fff 15%);
-    }
+.thumb.active{
+  border-color:var(--teal);
+}
 
-    .thumb img{
-      width:100%;
-      height:120px;
-      object-fit:cover;
-      display:block;
-    }
+.thumb img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
 
-    /* Viewer */
-    .viewer{
-      background:rgba(251,247,236,.78);
-      border:2px solid rgba(58,69,90,.10);
-      border-radius:18px;
-      padding:12px;
-      box-shadow:var(--shadow);
-    }
+/* Viewer */
+.viewer{
+  background:#fff;
+  border-radius:16px;
+  padding:12px;
+}
 
-    .stage{
-      background:#fff;
-      border-radius:14px;
-      border:3px solid color-mix(in srgb,var(--pink) 45%,#fff 55%);
-      overflow:auto;
-      max-height:calc(100vh - 190px);
-    }
-
-    .stage img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    footer{
-      max-width:1320px;
-      margin:0 auto 18px;
-      padding:0 14px;
-      font-size:12px;
-      opacity:.75;
-    }
-  </style>
+.viewer img{
+  width:100%;
+  display:block;
+}
+</style>
 </head>
 
 <body>
 
 <header dir="ltr">
   <div class="brand">
-    <img src="logo.png" alt="Bubbles logo">
-    <div class="titles">
-      <div class="ar" dir="rtl">الغرفة</div>
-      <div class="en">BUBBLES</div>
-    </div>
+    <img src="logo.png" alt="">
+    <strong>الغرفة</strong>
   </div>
 
   <div class="controls">
-    <button id="prevBtn">◀</button>
+    <button id="prev">◀</button>
     <div class="counter" id="counter">1 / 7</div>
-    <button id="nextBtn">▶</button>
+    <button id="next">▶</button>
   </div>
 </header>
 
 <main>
-  <aside dir="rtl">
-    <h2>الصفحات</h2>
+  <aside>
     <div class="thumbs" id="thumbs"></div>
   </aside>
 
   <section class="viewer">
-    <div class="stage">
-      <img id="pageImg" src="" alt="">
-    </div>
+    <img id="page">
   </section>
 </main>
 
-<footer dir="rtl">
-  كتاب تفاعلي بصيغة HTML — يحافظ على تصميم صفحات الكتاب الأصلي.
-</footer>
-
 <script>
-  const PAGES = [
-    "page-01.png",
-    "page-02.png",
-    "page-03.png",
-    "page-04.png",
-    "page-05.png",
-    "page-06.png",
-    "page-07.png"
-  ];
+const pages = [
+  "page-01.png",
+  "page-02.png",
+  "page-03.png",
+  "page-04.png",
+  "page-05.png",
+  "page-06.png",
+  "page-07.png"
+];
 
-  let current = 0;
+let current = 0;
 
-  const img = document.getElementById("pageImg");
-  const counter = document.getElementById("counter");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const thumbs = document.getElementById("thumbs");
+const img = document.getElementById("page");
+const counter = document.getElementById("counter");
+const thumbs = document.getElementById("thumbs");
 
-  function showPage(i){
-    current = Math.max(0, Math.min(PAGES.length - 1, i));
-    img.src = PAGES[current];
-    counter.textContent = (current + 1) + " / " + PAGES.length;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === PAGES.length - 1;
+function show(i){
+  current = Math.max(0, Math.min(pages.length-1, i));
+  img.src = pages[current];
+  counter.textContent = (current+1)+" / "+pages.length;
 
-    document.querySelectorAll(".thumb").forEach((t,idx)=>{
-      t.classList.toggle("active", idx === current);
-    });
+  document.querySelectorAll(".thumb").forEach((t,idx)=>{
+    t.classList.toggle("active", idx===current);
+  });
+}
 
-    const u = new URL(window.location);
-    u.searchParams.set("p", current + 1);
-    history.replaceState(null,"",u);
-  }
+pages.forEach((p,i)=>{
+  const d = document.createElement("div");
+  d.className="thumb";
+  const im=document.createElement("img");
+  im.src=p;
+  d.appendChild(im);
+  d.onclick=()=>show(i);
+  thumbs.appendChild(d);
+});
 
-  function buildThumbs(){
-    PAGES.forEach((p,i)=>{
-      const d = document.createElement("div");
-      d.className = "thumb";
-      const im = document.createElement("img");
-      im.src = p;
-      d.appendChild(im);
-      d.onclick = ()=>showPage(i);
-      thumbs.appendChild(d);
-    });
-  }
+document.getElementById("prev").onclick=()=>show(current-1);
+document.getElementById("next").onclick=()=>show(current+1);
 
-  prevBtn.onclick = ()=>showPage(current - 1);
-  nextBtn.onclick = ()=>showPage(current + 1);
-
-  window.onkeydown = e=>{
-    if(e.key === "ArrowLeft") showPage(current - 1);
-    if(e.key === "ArrowRight") showPage(current + 1);
-  };
-
-  const start = parseInt(new URL(window.location).searchParams.get("p") || "1");
-  buildThumbs();
-  showPage(start - 1);
+show(0);
 </script>
 
 </body>
